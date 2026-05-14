@@ -2,39 +2,61 @@
 Snakes and Stairs
 # Snakes and Stairs 🐍⬆️
 ## English
-### Game Features
-* **Dynamic Opponent Selection:** If you don't enter a second player's name, the game against the COMPUTER is automatically activated.
-* **Draw:** At the start of the game, the dice are automatically rolled to determine the turn order.
-* **Various Obstacles:**
-* 🐍 **Small Snakes:** Knock back 6 spaces.
-* 🐍 **Long Snakes:** Knock back 12 spaces.
-* ⬆️ **Normal Ladders:** Move forward 6 spaces.
-* ⬆️ **Long Ladders:** Move forward 12 spaces.
-* **Perfect Finish Mechanic:** To win, you must land exactly on space 50. If the rolled number is higher than the required number, the player remains where they are.
-### Requirements
-* Python 3.x
-### How to run
-1. Make sure you have Python installed.
+A console implementation of the classic board game "Snakes and Ladders" in Python. The game supports both human and computer opponents.
+### 🎮 Game Features
+* **Flexible Players**: Supports 2 to 4 players.
+* **Computer Opponents**: If you press *Enter* while entering your name, the computer will take your place.
+* **Moment of Truth Mechanic**: At the start of the game, the dice are automatically rolled to determine the turn order.
+* **Interactive Elements**:
+* 🐍 **Snakes**: Knock back 6 squares.
+* 🐉 **Long Snakes**: Knock back 12 squares.
+* ⬆️ **Ladders**: Move forward 6 squares.
+* 🪜 **Long Ladders**: Move forward 12 squares.
+ * **Winning condition**: You must score exactly **50 points**. If the number rolled exceeds the limit, the player remains in place.
+### 🚀 How to run
+1. Make sure you have Python 3.10 or higher installed.
 2. Download the Snakes and Stairs.py file.
-3. Run the game from the terminal:
-python "Snakes and Stairs.py"
+ 3. Run it via the terminal:
+python "Snakes and Stairs.py
+### 🛠 Controls
+* Enter the number of players (2, 3, or 4).
+* Enter names. To add a bot, leave the name field blank.
+* During the game, press **Enter** to roll the dice for your character. The bot "rolls" the dice automatically.
+## 📝 Description of the second commit (Commit Message)
+**Title:** feat: Added player composition selection and the "Moment of Truth" mechanic
+**Description:**
+* **Multiplayer and AI:** Added the ability to select the number of players (from 2 to 4). Implemented support for bots (COMPUTER1-3) if the name field is left blank.
+* **Moment of Truth:** Added an algorithm for determining the turn order at the beginning of the game. The system rolls dice for each player and sorts them in descending order (excluding duplicates by re-rolling).
+*  **Movement Logic:** Added Player and Computer classes. Implemented the throw function with processing of special fields (snakes, ladders, overflights).
+* **Final Ranking:** Implemented a ranking system (Winner, Runner-up, Loser) based on the number of participants.
 
 # Змейки и Лестницы 🐍⬆️
 ## Русский
-Простая консольная реализация классической настольной игры "Змейки и лестницы" на языке Python. Игра поддерживает режим для двух игроков или игру против компьютера.
-### Особенности игры
-* **Динамический выбор противника:** Если не вводить имя второго игрока, автоматически активируется режим игры против COMPUTER.
-* **Жеребьевка:** В начале игры происходит автоматический бросок кубиков для определения очередности ходов.
-* **Разнообразные препятствия:**
-    * 🐍 **Маленькие змеи:** Отбрасывают назад на 6 клеток.
-    * 🐍 **Длинные змеи:** Отбрасывают назад на 12 клеток.
-    * ⬆️ **Обычные лестницы:** Поднимают вперед на 6 клеток.
-    * ⬆️ **Длинные лестницы:** Поднимают вперед на 12 клеток.
-* **Механика точного финиша:** Чтобы победить, нужно попасть ровно на клетку 50. Если выпавшее число больше необходимого, игрок остается на месте.
-### Требования
-* Python 3.x
-### Как запустить
-1. Убедитесь, что у вас установлен Python.
-2. Скачайте файл Snakes and Stairs.py.
-3. Запустите игру через терминал:
-   python "Snakes and Stairs.py"
+Консольная реализация классической настольной игры «Змеи и лестницы» на Python. Игра поддерживает как живых игроков, так и компьютерных оппонентов.
+### 🎮 Особенности игры
+ * **Гибкий состав**: Поддержка от 2 до 4 игроков.
+ * **Компьютерные оппоненты**: Если при вводе имени нажать *Enter*, место игрока займет компьютер.
+ * **Механика «Момент истины»**: В начале игры происходит автоматический бросок кубика для определения очередности ходов.
+ * **Интерактивные элементы**:
+   * 🐍 **Змеи**: Отбрасывают назад на 6 клеток.
+   * 🐉 **Длинные змеи**: Отбрасывают назад на 12 клеток.
+   * ⬆️ **Лестницы**: Продвигают вперед на 6 клеток.
+   * 🪜 **Длинные лестницы**: Продвигают вперед на 12 клеток.
+ * **Условие победы**: Нужно набрать ровно **50 очков**. Если выпавшее число превышает лимит, игрок остается на месте.
+### 🚀 Как запустить
+ 1. Убедитесь, что у вас установлен Python 3.10 или выше.
+ 2. Скачайте файл Snakes and Stairs.py.
+ 3. Запустите его через терминал:
+   python "Snakes and Stairs.py
+### 🛠 Управление
+ * Введите количество игроков (2, 3 или 4).
+ * Введите имена. Чтобы добавить бота, оставьте поле имени пустым.
+ * В процессе игры нажимайте **Enter**, чтобы бросить кубик за своего персонажа. Бот «бросает» кубик автоматически.
+## 📝 Описание второго коммита (Commit Message)
+**Заголовок:** feat: добавлен выбор состава игроков и механика "Момент истины"
+**Описание:**
+ * **Мультиплеер и ИИ:** Добавлена возможность выбора количества игроков (от 2 до 4). Реализована поддержка ботов (COMPUTER1-3), если поле имени остается пустым.
+ * **Момент истины:** Добавлен алгоритм определения очередности ходов в начале игры. Система бросает кубики за каждого участника и сортирует их по убыванию (исключая дубликаты путем переброса).
+ * **Логика передвижения:** Добавлены классы Player и Computer. Реализована функция brosok с обработкой специальных полей (змеи, лестницы, перелет за финишную черту).
+ * **Финальный рейтинг:** Реализована система распределения мест (Победитель, Призер, Проигравший) в зависимости от количества участников.
+ * 
