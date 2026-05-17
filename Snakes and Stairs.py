@@ -1,9 +1,12 @@
 from random import randint
 from time import sleep
+
+p=['Player 2', 'Player 3', 'Player 4']
 c=['COMPUTER1', 'COMPUTER2', 'COMPUTER3']
 
-def game(info):
-    name=input(f'[{info}] Enter name: ')
+def game():
+    name=input(f'[{p[0]}] Enter name: ')
+    p.pop(0)
     if name =='':
         name=c[0]
         c.pop(0)
@@ -90,84 +93,47 @@ while True:
         case _:
             print('Error!!!')
 
+lst1=[]
 while True:
     Player1=input('[Player 1] Enter name: ')
     if Player1!='':
+        lst1.append(Player1)
         break
     else:
         print('Error!!!')
 
-match count:
-    case 2:
-        Player2=game('Player 2')
-    case 3:
-        Player2=game('Player 2')
-        Player3=game('Player 3')
-    case 4:
-        Player2=game('Player 2')
-        Player3=game('Player 3')
-        Player4=game('Player 4')   
+for i in range(count-1):
+    x=game()
+    lst1.append(x)
 
 while True:
-    u1=randint(1, 6)
-    match count:
-        case 2:
-            u2=randint(1, 6)
-            lst=[(Player1, u1), (Player2, u2)]
-            lst.sort(key=lambda x: x[1], reverse=True)
-            result=list(map(lambda x: x[1], lst))
-            nr, r=[], []
-            for i in result:
-                if i not in nr:
-                    nr.append(i)
-                else:
-                    r.append(i)
-            if r==[]:
-                print('Moment of Truth 🥁')
+    lst=[]
+    for i in lst1:
+        move=randint(1, 6)
+        lst.append((i, move))
+    lst.sort(key=lambda x: x[1], reverse=True)    
+    result=list(map(lambda x: x[1], lst))
+    nr, r=[], []
+    for i in result:
+        if i not in nr:
+            nr.append(i)
+        else:
+            r.append(i)
+    if r==[]:
+        print('Moment of Truth 🥁')
+        match count:
+            case 2:
                 sleep(2)
-                print(f'{Player1}: {u1}, {Player2}: {u2}')
-                break
-            else:
-                continue
-        case 3:
-            u2=randint(1, 6)
-            u3=randint(1, 6)
-            lst=[(Player1, u1), (Player2, u2), (Player3, u3)]
-            lst.sort(key=lambda x: x[1], reverse=True)
-            result=list(map(lambda x: x[1], lst))
-            nr, r=[], []
-            for i in result:
-                if i not in nr:
-                    nr.append(i)
-                else:
-                    r.append(i)
-            if r==[]:
-                print('Moment of Truth 🥁')
+            case 3:
                 sleep(4)
-                print(f'{Player1}: {u1}, {Player2}: {u2}, {Player3}: {u3}')
-                break
-            else:
-                continue
-        case 4:
-            u2=randint(1, 6)
-            u3=randint(1, 6)
-            u4=randint(1, 6)
-            lst=[(Player1, u1), (Player2, u2), (Player3, u3), (Player4, u4)]
-            lst.sort(key=lambda x: x[1], reverse=True)
-            result=list(map(lambda x: x[1], lst))
-            nr, r=[], []
-            for i in result:
-                if i not in nr:
-                    nr.append(i)
-                else:
-                    r.append(i)
-            if r==[]:
-                print('Moment of Truth 🥁')
+            case 4:
                 sleep(6)
-                print(f'{Player1}: {u1}, {Player2}: {u2}, {Player3}: {u3}, {Player4}: {u4}')
-                break
-            else:
-                continue
+        result=[f'{i}: {c}' for i, c in lst]
+        text=', '.join(result)
+        print(text)
+        break
+    else:
+        continue
 
 new_lst=list(map(lambda x: x[0], lst))
 result1=[]
@@ -176,14 +142,6 @@ for i in new_lst:
         result1.append(Computer(i))
     else:
         result1.append(Human(i))
-
-match count:
-    case 2:
-        P1, P2=result1
-    case 3:
-        P1, P2, P3=result1
-    case 4:
-        P1, P2, P3, P4=result1
 
 for n, i in enumerate(result1, 1):
     print(f'{n}) {i.name}')
@@ -206,22 +164,18 @@ def brosok(obj):
                             print('NO')
                             isteleportation=False
                         else:
-                            print('TELEPORTATION')
-                            da_blin=input('Choose player for teleportation: ')
-                            match da_blin:
-                                case P1.name:
-                                    print(f'{obj.name} --> {P1.name}')
-                                    obj.level, P1.level=obj.teleport(P1)
-                                case P2.name:
-                                    print(f'{obj.name} --> {P2.name}')
-                                    obj.level, P2.level=obj.teleport(P2)
-                                case P3.name:
-                                    print(f'{obj.name} --> {P3.name}')
-                                    obj.level, P3.level=obj.teleport(P3)
-                                case P4.name:
-                                    print(f'{obj.name} --> {P4.name}')
-                                    obj.level, P4.level=obj.teleport(P4)
-                                case _:
+                            while True:
+                                print('TELEPORTATION')
+                                da_blin=input('Choose player for teleportation: ')
+                                if da_blin==obj.name:
+                                    print('Don\'t write your name!!!')
+                                elif da_blin in [i.name for i in result1]:
+                                    print(f'{obj.name} --> {da_blin}')
+                                    for i in result1:
+                                        if da_blin==i.name:
+                                            obj.level, i.level=obj.teleport(i)
+                                    break
+                                else:
                                     print('Error!!!')
                             isteleportation=True
                         break
@@ -245,62 +199,62 @@ def brosok(obj):
                         if obj.money_ice==0:
                             print('NO')
                         else:
-                            da_blin=input('Choose player for ice: ')
-                            match da_blin:
-                                case P1.name:
-                                    print(f'ICE: {P1.name}')
-                                    P1.play=ice(P1)
-                                case P2.name:
-                                    print(f'ICE: {P2.name}')
-                                    P2.play=ice(P2)
-                                case P3.name:
-                                    print(f'ICE: {P3.name}')
-                                    P3.play=ice(P3)
-                                case P4.name:
-                                    print(f'ICE: {P4.name}')
-                                    P4.play=ice(P4)
-                            obj.money_ice=0
+                            while True:
+                                da_blin=input('Choose player for ice: ')
+                                if da_blin==obj.name:
+                                    print('Don\'t write your name!!!')
+                                elif da_blin in [i.name for i in result1]:
+                                    print(f'ICE: {da_blin}')
+                                    for i in result1:
+                                        if da_blin==i.name:
+                                            i.play=ice(i)
+                                    obj.money_ice=0
+                                    break
+                                else:
+                                    print('Error!!!')
                     case _:
-                        break    
+                        break
         if isteleportation==False:
             if isinstance(obj, Computer):
                 print(f'[{obj.name}] Generate: ')
-        num=randint(1, 6)
-        if isdouble==True:
-            print(f'{num}x2')
-            num=double(num)
-        print(f'{num}')
-        obj.level+=num
-        if obj.level==parametr:
-            print(obj.level)
-            obj.status=final_num[0]
-            print(w[0])
-            final_num.pop(0)
-            w.pop(0)
-        elif obj.level>parametr:
-            print('Number is bigger than parametr')
-            obj.level-=num
-            print(obj.level)
-        elif obj.level in snakes:
-            print('🐍')
-            obj.level-=6
-            print(obj.level)
-        elif obj.level in lsnakes:
-            print('🐍🐍')
-            obj.level-=12
-            print(obj.level)
-        elif obj.level in ssnake:
-            print('Dangerous 🐍')
-            obj.level-=60
-            print(obj.level)
-        elif obj.level in stairs:
-            print('🪜')
-            obj.level+=6
-            print(obj.level)
-        elif obj.level in lstairs:
-            print('🪜🪜')
-            obj.level+=12
-            print(obj.level)
+            num=randint(1, 6)
+            if isdouble==True:
+                print(f'{num}x2')
+                num=double(num)
+            print(f'{num}')
+            obj.level+=num
+            if obj.level==parametr:
+                print(obj.level)
+                obj.status=final_num[0]
+                print(w[0])
+                final_num.pop(0)
+                w.pop(0)
+            elif obj.level>parametr:
+                print('Number is bigger than parametr')
+                obj.level-=num
+                print(obj.level)
+            elif obj.level in snakes:
+                print('🐍')
+                obj.level-=6
+                print(obj.level)
+            elif obj.level in lsnakes:
+                print('🐍🐍')
+                obj.level-=12
+                print(obj.level)
+            elif obj.level in ssnake:
+                print('Dangerous 🐍')
+                obj.level-=60
+                print(obj.level)
+            elif obj.level in stairs:
+                print('🪜')
+                obj.level+=6
+                print(obj.level)
+            elif obj.level in lstairs:
+                print('🪜🪜')
+                obj.level+=12
+                print(obj.level)
+            else:
+                print(obj.level)
         else:
             print(obj.level)
         spisok2_result=(obj.level, obj.status)
@@ -312,50 +266,29 @@ def brosok(obj):
     return spisok2_result
 
 while True:
-    P1.level, P1.status=brosok(P1)
-    P1.play=True
-    match count:
-        case 2:
-            P2.level, P2.status=brosok(P2)
-            P2.play=True
-            spisok=[(P1.name, P1.level, P1.status), (P2.name, P2.level, P2.status)]
-            spisok.sort(key=lambda x: x[2], reverse=False)
-            spisok1=list(map(lambda x: x[0], spisok))
-            spisok2=list(map(lambda x: x[2], spisok))
-            if 1 in spisok2:
-                print(f'1) {spisok1[0]} - WINNER 😎🏆')
-                print(f'2) {spisok1[1]} - LOSER 😫')
-                break
-        case 3:
-            P2.level, P2.status=brosok(P2)
-            P2.play=True
-            P3.level, P3.status=brosok(P3)
-            P3.play=True
-            spisok=[(P1.name, P1.level, P1.status), (P2.name, P2.level, P2.status), (P3.name, P3.level, P3.status)]
-            spisok.sort(key=lambda x: x[2], reverse=False)
-            spisok1=list(map(lambda x: x[0], spisok))
-            spisok2=list(map(lambda x: x[2], spisok))
-            if 1 in spisok2 and 2 in spisok2:
-                print(f'1) {spisok1[0]} - WINNER 😎🏆')
-                print(f'2) {spisok1[1]} - ROUND-UP 😀')
-                print(f'3) {spisok1[2]} - LOSER 😫')
-                break
-        case 4:
-            P2.level, P2.status=brosok(P2)
-            P2.play=True
-            P3.level, P3.status=brosok(P3)
-            P3.play=True
-            P4.level, P4.status=brosok(P4)
-            P4.play=True
-            spisok=[(P1.name, P1.level, P1.status), (P2.name, P2.level, P2.status), (P3.name, P3.level, P3.status), (P4.name, P4.level, P4.status)]
-            spisok.sort(key=lambda x: x[2], reverse=False)
-            spisok1=list(map(lambda x: x[0], spisok))
-            spisok2=list(map(lambda x: x[2], spisok))
-            if 1 in spisok2 and 2 in spisok2 and 3 in spisok2:
-                print(f'1) {spisok1[0]} - WINNER 😎🏆')
-                print(f'2) {spisok1[1]} - ROUND-UP 😀')
-                print(f'3) {spisok1[2]} - BRONZE MEDALIST 😐')
-                print(f'4) {spisok1[3]} - LOSER 😫')
-                break
+    for player in result1:
+        player.level, player.status=brosok(player)
+        player.play=True
+    spisok=[]
+    for player in result1:
+        spisok.append((player.name, player.level, player.status))
+    spisok.sort(key=lambda x: x[2], reverse=False)
+    spisok1=list(map(lambda x: x[0], spisok))
+    spisok2=list(map(lambda x: x[2], spisok))
+    if 1 in spisok2 and count==2:
+        print(f'1) {spisok1[0]} - WINNER 😎🏆')
+        print(f'2) {spisok1[1]} - LOSER 😫')
+        break
+    elif 1 in spisok2 and 2 in spisok2 and count==3:
+        print(f'1) {spisok1[0]} - WINNER 😎🏆')
+        print(f'2) {spisok1[1]} - ROUND-UP 😀')
+        print(f'3) {spisok1[2]} - LOSER 😫')
+        break
+    elif 1 in spisok2 and 2 in spisok2 and 3 in spisok2 and count==4:
+        print(f'1) {spisok1[0]} - WINNER 😎🏆')
+        print(f'2) {spisok1[1]} - ROUND-UP 😀')
+        print(f'3) {spisok1[2]} - BRONZE MEDALIST 😐')
+        print(f'4) {spisok1[3]} - LOSER 😫')
+        break
 
 end=input('Enter to exit: ')
