@@ -46,7 +46,22 @@ rutranslate={
     'LOSER': 'ЛУЗЕР',
     'Enter to exit: ': 'Введите для выхода: ',
     'Let\'s Go!!!': 'Начнём!!!',
-    'Don\'t write your name!!!': 'Не пиши своё имя!!!'
+    'Don\'t write your name!!!': 'Не пиши своё имя!!!',
+    'Enter to exit mode: ': 'Войдите в режим выхода: ',
+    'Game      Highscores      Settings      Exit': 'Игра      Рекорды      Настройки      Выход',
+    'Choose a game mode: ': 'Выберите режим игры: ',
+    'Do you want to change language (Enter \"Language\"): ': 'Хотите ли вы изменить язык (введите \"Язык\"): ',
+    'Do you want to exit (\"Yes\" or \"No\"): ': 'Вы хотите завершить (\"Да\" или \"Нет\"): ',
+    'Goodbye!!!': 'До свидания!!',
+    'Language': 'Язык',
+    'No': 'Нет',
+    'Game': 'Игра',
+    'Rules': 'Правилы',
+    'Highscores': 'Рекорды',
+    'Settings': 'Настройки',
+    'Exit': 'Выход',
+    'LEADERBOARD:': 'ЛИДЕРБОРД:', 
+    'Since you didn\'t use any abilities, you get double points': 'Поскольку вы не использовали никаких способностей, вы получаете двойные очки'
              }
 
 
