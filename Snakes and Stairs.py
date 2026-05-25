@@ -77,7 +77,7 @@ def double(num):
 while True:
     print(translator('Snakes and Stairs', lang))
     print(f'{translator('Creator: Abdyrahym Begenjov', lang)}    (GitHub: abdyrahym-begenjov)')
-    print(translator('Game      Highscores      Settings      Exit', lang))
+    print(translator('Game      Rules      Highscores      Settings      Exit', lang))
     mode=input(translator('Choose a game mode: ', lang))
     mode=mode.title().strip()
     if lang=='ru':
@@ -94,7 +94,10 @@ while True:
                     name=c[0]
                     c.pop(0)
                 if name not in base:
-                    base[name]=0
+                    if name.startswith('КОМПЬЮТЕР'):
+                        base[translator(name, 'en1')]=0
+                    else:
+                        base[name]=0
                     pywrite('base.json', base)
                 return name
 
@@ -203,6 +206,7 @@ while True:
                 print(f'{n}) {i.name}')
 
             start1=input(translator('Enter to start game: ', lang))
+            clear_screen()
             print(translator('Let\'s Go!!!', lang))
             w=[translator('First Winner', lang), translator('Second Winner', lang), translator('Third Winner', lang), translator('Forth Winner', lang)]
             points_list=[3, 2, 1, 0]
@@ -294,7 +298,10 @@ while True:
                             if isinstance(obj, Human) and obj.moneys==4:
                                 print(translator('Since you didn\'t use any abilities, you get double points', lang))
                                 point*=2
-                            base[obj.name]+=point
+                            if obj.name.startswith('КОМПЬЮТЕР'):
+                                base[translator(obj.name, 'en1')]+=point
+                            else:
+                                base[obj.name]+=point
                             pywrite('base.json', base)
                         elif obj.level>parametr:
                             print(translator('Number is bigger than parametr', lang))
@@ -361,10 +368,21 @@ while True:
             end=input(translator('Enter to exit mode: ', lang))
             clear_screen()
 
+        case 'Rules':
+            if lang=='ru':
+                rules=pyread('ru_rules.txt')
+            else:
+                rules=pyread('en_rules.txt')
+            print(rules)
+            end=input(translator('Enter to exit mode: ', lang))
+            clear_screen()
+
         case 'Highscores':
             print(translator('LEADERBOARD:', lang))
             base=dict(sorted(base.items(), key=lambda x: x[1], reverse=True))
             for i, j in base.items():
+                if i.startswith('COMPUTER') and lang=='ru':
+                    i=translator(i, 'ru')
                 print(f'{i}: {j}')
             end=input(translator('Enter to exit mode: ', lang))
             clear_screen()
