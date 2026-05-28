@@ -2,7 +2,7 @@
 Snakes and Stairs
 # 🐍 Snakes and Stairs (Змеи и Лестницы) 🪜
 ## English
-An interactive, multi-language, console-based digital adaptation of the classic "Snakes and Ladders" board game, built entirely in Python. Play with up to 4 players, including local human players and AI-controlled opponents. This version modernizes the timeless classic by introducing unique inventory systems, tactical abilities, variable game difficulties, and a persistent leaderboard system.
+An interactive, multi-language, console-based digital adaptation of the classic "Snakes and Ladders" board game, built entirely in Python. Play with up to 4 players, including local human players and computer opponents. This version modernizes the timeless classic by introducing unique inventory systems, tactical abilities, variable game difficulties, and a persistent leaderboard system.
 ### ✨ Key Features
  * **Dynamic Difficulties:** Tailor your match length and board intensity with three distinct difficulties (Easy with a 50-step goal, Normal with a 75-step goal, or Hard with a grueling 100-step goal).
  * **Tactical Power-ups:** Go beyond pure dice luck! Human players can invoke specialized match abilities:
@@ -22,7 +22,7 @@ Make sure you have Python 3.10 or higher installed, as this game utilizes modern
  3. Run the primary entry point file using the command: python "Snakes and Stairs.py"
 ### 🎮 Game Rules & Loop
  1. **Setup:** Choose your desired language setting on your first launch. Select **Game** from the primary home terminal selection menu.
- 2. **Player Configuration:** Input the total count of active competitors (2 to 4 players). Type your name to fill a slot; leaving the prompt completely blank automatically configures an intelligent computer AI player to step into the match.
+ 2. **Player Configuration:** Input the total count of active competitors (2 to 4 players). Type your name to fill a slot; leaving the prompt completely blank automatically configures an computer player to step into the match.
  3. **The Roll of Destiny:** A pre-game dice simulation evaluates everyone's starting agility. The highest rolling sequence dictates the official active turn order.
  4. **Gameplay Options:** On your active turn, simply press Enter to trigger a normal random dice roll (1-6). Alternatively, text-invoke special ability perks like double, teleport, rocket, or ice to turn the tide.
  5. **Hazards & Aids:** * Stepping onto a basic Snake (🐍) or a Large Snake (🐍🐍) drags you down. Beware of the catastrophic *Dangerous Snake* on Hard mode!
@@ -30,7 +30,7 @@ Make sure you have Python 3.10 or higher installed, as this game utilizes modern
  6. **Victory Condition:** Navigate precisely to the finish line parameter. Landing over the finish line bounces your placement backward. Matches conclude with full placement distributions, crowning an ultimate winner and acknowledging runners-up!
      
 ## Русский
-Интерактивная многоязычная консольная адаптация классической настольной игры «Змеи и лестницы», написанная на Python. Играйте в компании до 4 человек, комбинируя реальных игроков и умных компьютерных соперников. Эта версия превращает чистую случайность в тактическое противостояние благодаря системе суперспособностей, разным уровням сложности и сохранению рекордов.
+Интерактивная многоязычная консольная адаптация классической настольной игры «Змеи и лестницы», написанная на Python. Играйте в компании до 4 человек, комбинируя реальных игроков и компьютерных соперников. Эта версия превращает чистую случайность в тактическое противостояние благодаря системе суперспособностей, разным уровням сложности и сохранению рекордов.
 ### ✨ Основные возможности
  * **Динамическая сложность:** Настраивайте длину матча под себя. Доступны три режима: Легкий (цель — 50 шагов), Нормальный (75 шагов) и Сложный (100 шагов с опасными ловушками).
  * **Тактические способности:** Влияйте на исход матча с помощью уникального инвентаря (доступно для игроков-людей):
