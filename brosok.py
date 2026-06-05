@@ -5,9 +5,9 @@ from players import *
 
 def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Human, Computer):
     if len(parameters)==6:
-        parameter, snakes, lsnakes, stairs, lstairs, ssnake=parameters
+        parameter, snakes, lsnakes, ladders, lladders, ssnake=parameters
     else:
-        parameter, snakes, lsnakes, stairs, lstairs=parameters
+        parameter, snakes, lsnakes, ladders, lladders=parameters
         ssnake=[100]
     isdouble=False
     isteleportation=False
@@ -15,6 +15,7 @@ def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Huma
         if isinstance(obj, Human):
             while True:
                 enter=input(f'[{obj.name}] {translator('Enter: ', lang)}')
+                enter=enter.lower().strip()
                 if lang=='ru':
                     enter=translator(enter, 'en1')
                 match enter:
@@ -24,7 +25,7 @@ def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Huma
                             isteleportation=False
                         else:
                             while True:
-                                print(translator('TELEPORTATION', lang))
+                                print(translator('TELEPORTATION 🌀', lang))
                                 da_blin=input(translator('Choose player for teleportation: ', lang))
                                 if da_blin==obj.name:
                                     print(translator('Don\'t write your name!!!', lang))
@@ -43,7 +44,7 @@ def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Huma
                             print(translator('NO', lang))
                             isdouble=False
                         else:
-                            print(translator('DOUBLE', lang))
+                            print(translator('DOUBLE ✖️', lang))
                             obj.money_double=0
                             obj.moneys-=1
                             isdouble=True
@@ -53,13 +54,14 @@ def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Huma
                         elif obj.level+10>=parameter:
                             print(translator('NO', lang))
                         else:
-                            print(translator('ROCKET   +10', lang))
+                            print(translator('ROCKET   +10 🚀', lang))
                             obj.level=obj.rocket()
                     case 'ice':
                         if obj.money_ice==0:
                             print(translator('NO', lang))
                         else:
                             while True:
+                                print(translator('ICE 🧊', lang))
                                 da_blin=input(translator('Choose player for ice: ', lang))
                                 if da_blin==obj.name:
                                     print(translator('Don\'t write your name!!!', lang))
@@ -115,11 +117,11 @@ def brosok(obj, base, lang, parameters, result1, final_num, points_list, w, Huma
                 print(f'{translator('Dangerous', lang)} 🐍')
                 obj.level-=60
                 print(obj.level)
-            elif obj.level in stairs:
+            elif obj.level in ladders:
                 print('🪜')
                 obj.level+=6
                 print(obj.level)
-            elif obj.level in lstairs:
+            elif obj.level in lladders:
                 print('🪜🪜')
                 obj.level+=12
                 print(obj.level)

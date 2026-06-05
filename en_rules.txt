@@ -1,8 +1,8 @@
-🐍 Snakes and Stairs — Full Official Game Rules 🪜
+🐍 Snakes and Ladders — Full Official Game Rules 🪜
 
 1. Game Overview
 
-"Snakes and Stairs" is a turn-based, competitive board game designed for 2 to 4 players. Inspired by the classic Snakes and Ladders concept, this version introduces unique tactical abilities for human players to alter the course of the game. The goal is to navigate your character token from tile 0 to the exact target tile dictated by the chosen difficulty level.
+"Snakes and Ladders" is a turn-based, competitive board game designed for 2 to 4 players. Inspired by the classic Snakes and Ladders concept, this version introduces unique tactical abilities for human players to alter the course of the game. The goal is to navigate your character token from tile 0 to the exact target tile dictated by the chosen difficulty level.
 The game supports local multiplayer where you can play against other humans or automated computer opponents.
 Important Note: COMPUTER bots are not AI. They are basic, automated player profiles governed by simple random number generation scripts and do not strategically use any tactical abilities.
 
@@ -29,28 +29,28 @@ At the start of a match, players select a game parameter which determines the la
 * Easy Mode (Target: Tile 50)
  		Standard Snakes: Tiles 13 and 31
  		Long Snakes: Tile 47
- 		Standard Stairs: Tiles 8 and 38
- 		Long Stairs: Tile 22
+ 		Standard Ladders: Tiles 8 and 38
+ 		Long Ladders: Tile 22
 
 * Normal Mode (Target: Tile 75)
  		Standard Snakes: Tiles 25, 36, and 49
  		Long Snakes: Tiles 73 and 68
- 		Standard Stairs: Tiles 20, 38, and 57
- 		Long Stairs: Tiles 3 and 12
+ 		Standard Ladders: Tiles 20, 38, and 57
+ 		Long Ladders: Tiles 3 and 12
 
 * Hard Mode (Target: Tile 100)
  		Standard Snakes: Tiles 24, 64, 63, and 62
  		Long Snakes: Tiles 13, 49, and 80
  		Dangerous Snake: Tile 95
- 		Standard Stairs: Tiles 4, 32, 70, and 61
- 		Long Stairs: Tiles 15, 55, and 87
+ 		Standard Ladders: Tiles 4, 32, 70, and 61
+ 		Long Ladders: Tiles 15, 55, and 87
 
 
 5. Core Movement and Board Obstacles
 
 On your turn, a standard 6-sided dice is rolled (generating a value from 1 to 6) to advance your token. Automated bots roll immediately, while human players have the option to input special commands before rolling. Landing on a tile with an obstacle applies an instantaneous penalty or boost:
-* Standard Stairs (🪜): Moves your token forward by 6 additional tiles.
-* Long Stairs (🪜🪜): Moves your token forward by 12 additional tiles.
+* Standard Ladders (🪜): Moves your token forward by 6 additional tiles.
+* Long Ladders (🪜🪜): Moves your token forward by 12 additional tiles.
 * Standard Snakes (🐍): Slips your token backward by 6 tiles.
 * Long Snakes (🐍🐍): Slips your token backward by 12 tiles.
 * Dangerous Snake (Dangerous 🐍): Exclusive to Hard Mode, landing here inflicts a massive penalty, sending your token backward by 60 tiles.
